@@ -15,21 +15,30 @@ Installation
 
 Usage
 -----
+
+As a library:
+
 .. code-block:: python
 
-    >>> from imohash import hashfile
+    from imohash import hashfile
 
-    >>> hashfile('foo.txt')
+    hashfile('foo.txt')
     'O\x9b\xbd\xd3[\x86\x9dE\x0e3LI\x83\r~\xa3'
 
-    >>> hashfile('foo.txt', hexdigest=True)
+    hashfile('foo.txt', hexdigest=True)
     'a608658926d8aa86b3db8208ad279bfe'
 
-    >>> hashfile('foo.txt', sample_threshhold=200000)  # just hash the whole file if smaller then 200000 bytes. Default is 128K
+    # just hash the whole file if smaller then 200000 bytes. Default is 128K
+    hashfile('foo.txt', sample_threshhold=200000)  # just hash the whole file if smaller then 200000 bytes. Default is 128K
     'x86\x9dE\x0e3LI\x83\r~\xa3O\x9b\xbd\xd3[E'
 
-    >>> hashfile('foo.txt', sample_size=1000)  # use samples of 1000 bytes. Default is 16K
+    # use samples of 1000 bytes. Default is 16K
+    hashfile('foo.txt', sample_size=1000)
     'E\x0e3LI\x83\r~\xa3O\x9b\xbd\xd3[E\x23\x25'
+
+Or from the command line:
+
+``imosum *.jpg``
 
 Uses
 ----
@@ -114,4 +123,6 @@ Credits
    this approach to hashing.
 -  Sébastien Paolacci's
    `murmur3 <https://github.com/spaolacci/murmur3>`__ library does all
-   of the heavy lifting.
+   of the heavy lifting in the Go version.
+-  As does Hajime Senuma's
+   `mmh3 <https://github.com/hajimes/mmh3>`__ library for the Python version.

@@ -33,6 +33,3 @@ def test_spec():
         assert binascii.hexlify(hashfile('.test_data', sample_threshhold=test[1], sample_size=test[0])) == test[3]
         os.remove('.test_data')
 
-
-#print(binascii.hexlify(M(16)))
-print(binascii.hexlify(M(1000000)))
