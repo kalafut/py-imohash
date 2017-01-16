@@ -1,0 +1,6 @@
+imohash.egg-info/*
+build/*
+dist/*
+.cache/*
+__pycache__/*
+*.pyc
