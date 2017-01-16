@@ -29,7 +29,7 @@ As a library:
     'a608658926d8aa86b3db8208ad279bfe'
 
     # just hash the whole file if smaller then 200000 bytes. Default is 128K
-    hashfile('foo.txt', sample_threshhold=200000)  # just hash the whole file if smaller then 200000 bytes. Default is 128K
+    hashfile('foo.txt', sample_threshhold=200000)
     'x86\x9dE\x0e3LI\x83\r~\xa3O\x9b\xbd\xd3[E'
 
     # use samples of 1000 bytes. Default is 16K
