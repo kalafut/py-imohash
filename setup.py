@@ -14,9 +14,9 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='1.0.0a1',
+    version='1.0.0a2',
 
-    description='Fast file hashing',
+    description='Fast hashing for large files',
     long_description=long_description,
 
     # The project's main homepage.
@@ -31,11 +31,7 @@ setup(
 
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
-        # How mature is this project? Common values are
-        #   3 - Alpha
-        #   4 - Beta
-        #   5 - Production/Stable
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
 
         # Indicate who your project is intended for
         'Intended Audience :: Developers',
@@ -62,7 +58,7 @@ setup(
                       'varint >= 1.0.2'],
     entry_points={
         'console_scripts': [
-            'imosum=imohash:imosum',
+            'imosum=imohash.imohash:imosum',
         ],
     },
 )

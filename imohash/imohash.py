@@ -12,7 +12,7 @@ import varint
 SAMPLE_THRESHOLD = 128 * 1024
 SAMPLE_SIZE = 16 * 1024
 
-def imohash(filename, sample_threshhold=SAMPLE_THRESHOLD, sample_size=SAMPLE_SIZE):
+def hashfile(filename, sample_threshhold=SAMPLE_THRESHOLD, sample_size=SAMPLE_SIZE):
     size = os.path.getsize(filename)
 
     with open(filename, 'rb') as f:
@@ -44,7 +44,4 @@ def imosum():
 
     for fn in files:
         if not os.path.isdir(fn):
-            print('{}  {}'.format(binascii.hexlify(imohash(fn)), fn))
-
-
-imosum()
+            print('{}  {}'.format(binascii.hexlify(hashfile(fn)), fn))
