@@ -3,6 +3,7 @@ imohash
 
 imohash is a fast, constant-time hashing library. It uses file
 size and sampling to calculate hashes quickly, regardless of file size.
+It was originally released as a `Go library <https://github.com/kalafut/imohash>`__.
 
 ``imosum`` is a sample application to hash files from the command line, similar to
 md5sum.
@@ -12,7 +13,23 @@ Installation
 
 ``pip install imohash``
 
-TBD
+Usage
+-----
+.. code-block:: python
+
+    >>> from imohash import hashfile
+
+    >>> hashfile('foo.txt')
+    'O\x9b\xbd\xd3[\x86\x9dE\x0e3LI\x83\r~\xa3'
+
+    >>> hashfile('foo.txt', hexdigest=True)
+    'a608658926d8aa86b3db8208ad279bfe'
+
+    >>> hashfile('foo.txt', sample_threshhold=200000)  # just hash the whole file if smaller then 200000 bytes. Default is 128K
+    'x86\x9dE\x0e3LI\x83\r~\xa3O\x9b\xbd\xd3[E'
+
+    >>> hashfile('foo.txt', sample_size=1000)  # use samples of 1000 bytes. Default is 16K
+    'E\x0e3LI\x83\r~\xa3O\x9b\xbd\xd3[E\x23\x25'
 
 Uses
 ----
@@ -46,7 +63,7 @@ description <https://github.com/kalafut/imohash/blob/master/algorithm.md>`__.)
 imohash is works by hashing small chunks of data from the beginning,
 middle and end of a file. It also incorporates the file size into the
 final 128-bit hash. This approach is based on a few assumptions which
-will vary by application. First, file size alone *tends*\ 1 to be a
+will vary by application. First, file size alone *tends* (1) to be a
 pretty good differentiator, especially as file size increases. And when
 people do things to files (such as editing photos), size tends to
 change. So size is used directly in the hash, and **any files that have

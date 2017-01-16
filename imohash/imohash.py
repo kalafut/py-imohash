@@ -12,7 +12,7 @@ import varint
 SAMPLE_THRESHOLD = 128 * 1024
 SAMPLE_SIZE = 16 * 1024
 
-def hashfile(filename, sample_threshhold=SAMPLE_THRESHOLD, sample_size=SAMPLE_SIZE):
+def hashfile(filename, sample_threshhold=SAMPLE_THRESHOLD, sample_size=SAMPLE_SIZE, hexdigest=False):
     size = os.path.getsize(filename)
 
     with open(filename, 'rb') as f:
@@ -28,8 +28,9 @@ def hashfile(filename, sample_threshhold=SAMPLE_THRESHOLD, sample_size=SAMPLE_SI
     hash_tmp = mmh3.hash_bytes(data)
     hash_ = hash_tmp[7::-1] + hash_tmp[16:7:-1]
     enc_size = varint.encode(size)
+    digest = enc_size + hash_[len(enc_size):]
 
-    return enc_size + hash_[len(enc_size):]
+    return binascii.hexlify(digest) if hexdigest else digest
 
 
 def imosum():
@@ -44,4 +45,4 @@ def imosum():
 
     for fn in files:
         if not os.path.isdir(fn):
-            print('{}  {}'.format(binascii.hexlify(hashfile(fn)), fn))
+            print('{}  {}'.format(hashfile(fn, hexdigest=True), fn))

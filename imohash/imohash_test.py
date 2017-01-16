@@ -2,7 +2,7 @@ import binascii
 import hashlib
 import os
 
-from imohash import imohash
+from imohash import hashfile
 
 def M(size):
     chunks = []
@@ -30,7 +30,7 @@ def test_spec():
     for test in tests:
         with open('.test_data', 'wb') as f:
             f.write(M(test[2]))
-        assert binascii.hexlify(imohash('.test_data', sample_threshhold=test[1], sample_size=test[0])) == test[3]
+        assert binascii.hexlify(hashfile('.test_data', sample_threshhold=test[1], sample_size=test[0])) == test[3]
         os.remove('.test_data')
 
 
