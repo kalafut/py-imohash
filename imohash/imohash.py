@@ -30,7 +30,7 @@ def hashfile(filename, sample_threshhold=SAMPLE_THRESHOLD, sample_size=SAMPLE_SI
     enc_size = varint.encode(size)
     digest = enc_size + hash_[len(enc_size):]
 
-    return binascii.hexlify(digest) if hexdigest else digest
+    return binascii.hexlify(digest).decode() if hexdigest else digest
 
 
 def imosum():
