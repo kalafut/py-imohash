@@ -69,7 +69,7 @@ Design
 (Note: a more precise description is provided in the `algorithm
 description <https://github.com/kalafut/imohash/blob/master/algorithm.md>`__.)
 
-imohash is works by hashing small chunks of data from the beginning,
+imohash works by hashing small chunks of data from the beginning,
 middle and end of a file. It also incorporates the file size into the
 final 128-bit hash. This approach is based on a few assumptions which
 will vary by application. First, file size alone *tends* (1) to be a
@@ -95,7 +95,7 @@ Small file exemption
 ~~~~~~~~~~~~~~~~~~~~
 
 Small files are more likely to collide on size than large ones. They're
-also probably more likely to change is subtle ways that sampling will
+also probably more likely to change in subtle ways that sampling will
 miss (e.g. editing a large text file). For this reason, imohash will
 simply hash the entire file if it is less than 128K. This parameter is
 also configurable.
