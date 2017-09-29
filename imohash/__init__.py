@@ -1,1 +1,1 @@
-from imohash import hashfile
+from .imohash import hashfile
