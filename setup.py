@@ -20,7 +20,7 @@ setup(
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/kalafut/py-imohash',
+    url='https://github.com/wedsa5/py-imohash',
 
     # Author details
     author='Jim Kalafut',
