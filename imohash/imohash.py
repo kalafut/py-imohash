@@ -15,9 +15,7 @@ SAMPLE_SIZE = 16 * 1024
 #Hashes an opened file object. Compatible with paramimo SFTPFile and regular files.
 def hashfileobject(f, sample_threshhold=SAMPLE_THRESHOLD, sample_size=SAMPLE_SIZE, hexdigest=False):
     #get file size from file object
-    f.seek(0, os.SEEK_END)
-    size = f.tell()
-    f.seek(0, os.SEEK_SET)
+    size = os.fstat(f.fileno()).st_size
 
     if size < sample_threshhold or sample_size < 1:
         data = f.read()
