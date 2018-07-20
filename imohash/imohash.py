@@ -26,8 +26,6 @@ def hashfileobject(f, sample_threshhold=SAMPLE_THRESHOLD, sample_size=SAMPLE_SIZ
         f.seek(-sample_size, os.SEEK_END)
         data += f.read(sample_size)
 
-    f.close()
-
     hash_tmp = mmh3.hash_bytes(data)
     hash_ = hash_tmp[7::-1] + hash_tmp[16:7:-1]
     enc_size = varint.encode(size)
@@ -36,8 +34,8 @@ def hashfileobject(f, sample_threshhold=SAMPLE_THRESHOLD, sample_size=SAMPLE_SIZ
     return binascii.hexlify(digest).decode() if hexdigest else digest
 
 def hashfile(filename, sample_threshhold=SAMPLE_THRESHOLD, sample_size=SAMPLE_SIZE, hexdigest=False):
-    f = open(filename, 'rb')
-    return hashfileobject(f, sample_threshhold, sample_size, hexdigest)
+    with open(filename, 'rb') as f:
+        return hashfileobject(f, sample_threshhold, sample_size, hexdigest)
 
 
 
