@@ -36,6 +36,19 @@ As a library:
     hashfile('foo.txt', sample_size=1000)
     'E\x0e3LI\x83\r~\xa3O\x9b\xbd\xd3[E\x23\x25'
 
+    # hash an already opened file
+    f = open('foo.txt')
+    hashfileobject(f)
+    'O\x9b\xbd\xd3[\x86\x9dE\x0e3LI\x83\r~\xa3'
+
+    # hash a file on a remote server
+    import paramiko
+    ssh = paramiko.SSHClient()
+    ssh.connect('host', username='username', password='verysecurepassword')
+    ftp = ssh.open_sftp()
+    hashfileobject(ftp.file('/path/to/remote/file/foo.txt'))
+    'O\x9b\xbd\xd3[\x86\x9dE\x0e3LI\x83\r~\xa3'
+
 Or from the command line:
 
 ``imosum *.jpg``
