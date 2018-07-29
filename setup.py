@@ -14,7 +14,7 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='1.0.3',
+    version='1.0.4',
 
     description='Fast hashing for large files',
     long_description=long_description,
@@ -51,10 +51,11 @@ setup(
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
     ],
     keywords='hash hashing imohash',
     packages=find_packages(),
-    install_requires=['mmh3 >= 2.3.1',
+    install_requires=['mmh3 >= 2.5.1',
                       'varint >= 1.0.2'],
     entry_points={
         'console_scripts': [
