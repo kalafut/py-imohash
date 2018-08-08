@@ -37,7 +37,7 @@ As a library:
     'E\x0e3LI\x83\r~\xa3O\x9b\xbd\xd3[E\x23\x25'
 
     # hash an already opened file
-    f = open('foo.txt')
+    f = open('foo.txt', 'rb')
     hashfileobject(f)
     'O\x9b\xbd\xd3[\x86\x9dE\x0e3LI\x83\r~\xa3'
 
