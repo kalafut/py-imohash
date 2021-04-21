@@ -31,7 +31,7 @@ def hashfileobject(f, sample_threshhold=SAMPLE_THRESHOLD, sample_size=SAMPLE_SIZ
     hash_tmp = mmh3.hash_bytes(data)
     hash_ = hash_tmp[7::-1] + hash_tmp[16:7:-1]
     enc_size = varint.encode(size)
-    digest = enc_size + hash_[len(enc_size):]
+    digest = hash_[len(enc_size):] + enc_size
 
     return binascii.hexlify(digest).decode() if hexdigest else digest
 
