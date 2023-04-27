@@ -46,11 +46,9 @@ def imosum():
         print('imosum filenames')
         return
 
-    files = set()
-
-    for x in sys.argv[1:]:
-        files.update(glob.glob(x))
-
-    for fn in files:
+    for fn in sys.argv[1:]:
+        if not os.path.exists(fn):
+            print('imosum: {}: No such file or directory'.format(fn))
+            continue
         if not os.path.isdir(fn):
             print('{}  {}'.format(hashfile(fn, hexdigest=True), fn))
