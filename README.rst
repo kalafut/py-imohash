@@ -8,6 +8,12 @@ It was originally released as a `Go library <https://github.com/kalafut/imohash>
 ``imosum`` is a sample application to hash files from the command line, similar to
 md5sum.
 
+Alternative implementations
+---------------------------
+* **Go**: https://github.com/kalafut/imohash
+* **Java**: https://github.com/dynatrace-oss/hash4j
+* **Rust**: https://github.com/hiql/imohash
+
 Installation
 ------------
 
