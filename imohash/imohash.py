@@ -25,7 +25,9 @@ def hashfileobject(f, sample_threshhold=SAMPLE_THRESHOLD, sample_size=SAMPLE_SIZ
         data = f.read(sample_size)
         f.seek(size//2)
         data += f.read(sample_size)
-        f.seek(-sample_size, os.SEEK_END)
+        # f.seek(-sample_size, os.SEEK_END)
+        tail = size - sample_size
+        f.seek(tail)
         data += f.read(sample_size)
 
     hash_tmp = mmh3.hash_bytes(data)
