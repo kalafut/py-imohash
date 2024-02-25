@@ -42,7 +42,9 @@ As a library:
     hashfile('foo.txt', sample_size=1000)
     'E\x0e3LI\x83\r~\xa3O\x9b\xbd\xd3[E\x23\x25'
 
-    # hash an already opened file
+    # hash an already opened file.
+    # note: the file-like object passed in should be in binary mode. Text mode
+    #       behavior is undefined (and likely will raise an exception)
     f = open('foo.txt', 'rb')
     hashfileobject(f)
     'O\x9b\xbd\xd3[\x86\x9dE\x0e3LI\x83\r~\xa3'
