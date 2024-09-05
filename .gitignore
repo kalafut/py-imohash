@@ -5,4 +5,5 @@ dist/*
 .tox/*
 .eggs/*
 __pycache__/*
+.pytest_cache/*
 *.pyc
