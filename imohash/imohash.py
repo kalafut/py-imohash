@@ -15,14 +15,14 @@ SAMPLE_SIZE = 16 * 1024
 
 # Hashes an opened file object. Compatible with paramimo SFTPFile and regular files.
 def hashfileobject(
-    f, sample_threshhold=SAMPLE_THRESHOLD, sample_size=SAMPLE_SIZE, hexdigest=False
+    f, sample_threshold=SAMPLE_THRESHOLD, sample_size=SAMPLE_SIZE, hexdigest=False
 ):
     # get file size from file object
     f.seek(0, os.SEEK_END)
     size = f.tell()
     f.seek(0, os.SEEK_SET)
 
-    if size < sample_threshhold or sample_size < 1 or size < (4 * sample_size):
+    if size < sample_threshold or sample_size < 1 or size < (4 * sample_size):
         data = f.read()
     else:
         data = read_full(f, sample_size)
@@ -54,12 +54,12 @@ def read_full(f, sample_size):
 
 def hashfile(
     filename,
-    sample_threshhold=SAMPLE_THRESHOLD,
+    sample_threshold=SAMPLE_THRESHOLD,
     sample_size=SAMPLE_SIZE,
     hexdigest=False,
 ):
     with open(filename, "rb") as f:
-        return hashfileobject(f, sample_threshhold, sample_size, hexdigest)
+        return hashfileobject(f, sample_threshold, sample_size, hexdigest)
 
 
 def imosum():
